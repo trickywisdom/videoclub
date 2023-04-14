@@ -12,6 +12,14 @@ const movieSchema = new mongoose.Schema(
   }
 );
 
+const usedmovieSchema = new mongoose.Schema({
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+});
+
 const Movie = mongoose.model("Movie", movieSchema);
 
+const Usedmovie = mongoose.model("Usedmovie", usedmovieSchema);
+
 module.exports = Movie;
+module.exports = Usedmovie;
