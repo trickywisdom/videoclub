@@ -1,12 +1,16 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar";
+import Signup from "./Components/Signup";
 
 function App() {
   return (
-    <Routes>
-      <Route path='/' element={<Navbar />} />
-    </Routes>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path='/Signup' element={<Signup />} />
+      </Routes>
+    </>
   );
 }
 

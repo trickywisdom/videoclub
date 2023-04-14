@@ -12,6 +12,9 @@ function Navbar() {
           <Link to="/Login">Login</Link>
         </li>
         <li>
+          <Link to="/signup">Signup</Link>
+        </li>
+        <li>
           <Link to="/Logout">Logout</Link>
         </li>
       </ul>
