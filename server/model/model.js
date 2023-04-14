@@ -1,17 +1,18 @@
 const mongoose = require("mongoose");
 
 // Define article model schema
-const articleSchema = new mongoose.Schema(
+const movieSchema = new mongoose.Schema(
   {
-    _id: String,
-    title: String,
-    description: String,
-    url: String,
-    publishedAt: String,
+    imdbID: String,
+    Title: String,
+    Year: String,
+    Genre: String,
+    Plot: String,
+    Poster: String,
   },
   { collection: "mvp" }
 );
 
-const Article = mongoose.model("Article", articleSchema);
+const Movie = mongoose.model("Movie", movieSchema);
 
-module.exports = Article;
+module.exports = Movie;
