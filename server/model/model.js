@@ -3,12 +3,12 @@ const mongoose = require("mongoose");
 // Define article model schema
 const movieSchema = new mongoose.Schema(
   {
-    imdbID: String,
-    Title: String,
-    Year: String,
-    Genre: String,
-    Plot: String,
-    Poster: String,
+    id: String,
+    title: String,
+    year: String,
+    genres: String,
+    plot: String,
+    image: String,
   }
 );
 

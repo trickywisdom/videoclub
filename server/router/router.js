@@ -8,16 +8,16 @@ router.get("/movie", async (req, res) => {
   try {
     const title = req.query.title;
     const response = await axios.get(
-      `http://www.omdbapi.com/?t=${title}&apikey=${process.env.OMDB_API_KEY}`
+      `https://imdb-api.com/en/API/SearchMovie/${process.env.IMDB_API_KEY}/${title}`
     );
     const movieData = response.data;
     ({
-      imdbID: movieData.imdbID,
-      Title: movieData.Title,
-      Year: movieData.Year,
-      Genre: movieData.Genre,
-      Plot: movieData.Plot,
-      Poster: movieData.Poster,
+      id: movieData.id,
+      title: movieData.title,
+      year: movieData.year,
+      genres: movieData.genres,
+      plot: movieData.plot,
+      image: movieData.image,
     });
 
     res.json(movieData);
@@ -31,12 +31,12 @@ router.post("/post-movies", async (req, res) => {
   try {
     const movie = new Movie({
       
-      imdbID: req.body.imdbID,
-      Title: req.body.Title,
-      Year: req.body.Year,
-      Genre: req.body.Genre,
-      Plot: req.body.Plot,
-      Poster: req.body.Poster
+      id: req.body.id,
+      title: req.body.title,
+      year: req.body.year,
+      genres: req.body.genres,
+      plot: req.body.plot,
+      image: req.body.image
     });
     await movie.save();
     res.status(201).send("Movie saved successfully");
