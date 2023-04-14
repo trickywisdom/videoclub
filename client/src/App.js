@@ -1,12 +1,12 @@
-// import './App.css';
-
-import MoviesForm from "./Components/MoviesForm";
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./Components/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <MoviesForm/>
-    </div>
+    <Routes>
+      <Route path='/' element={<Navbar />} />
+    </Routes>
   );
 }
 
