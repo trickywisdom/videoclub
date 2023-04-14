@@ -1,64 +1,68 @@
 const express = require("express");
 const axios = require("axios");
 const router = express.Router();
-const Article = require("../model/model")
-const { v4: uuidv4 } = require("uuid");
+const Movie = require("../model/model");
 
 
-router.get("/articles", async (req, res) => {
+router.get("/movie", async (req, res) => {
   try {
+    const title = req.query.title;
     const response = await axios.get(
-      `https://newsapi.org/v2/everything?q=${req.query.query}&apiKey=${process.env.NEWSAPI_KEY}`
+      `https://imdb-api.com/en/API/SearchMovie/${process.env.IMDB_API_KEY}/${title}`
     );
-    const articles = response.data.articles.map((article) => ({
-      id: article._id,
-      title: article.title,
-      description: article.description,
-      url: article.url,
-      publishedAt: article.publishedAt,
-    }));
-    res.json(articles);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Server error");
-  }
-});
-
-router.post("/post-articles", async (req, res) => {
-  try {
-    const article = new Article({
-      _id: uuidv4(), // generate a unique ID for the article
-      title: req.body.title,
-      description: req.body.description,
-      url: req.body.url,
-      publishedAt: req.body.publishedAt,
+    const movieData = response.data;
+    ({
+      id: movieData.id,
+      title: movieData.title,
+      year: movieData.year,
+      genres: movieData.genres,
+      plot: movieData.plot,
+      image: movieData.image,
     });
-    await article.save();
-    res.status(201).send("Article saved successfully");
+
+    res.json(movieData);
   } catch (error) {
     console.error(error);
-    res.status(500).send("Server error");
+    res.status(500).send("Server Error");
   }
 });
 
-router.get("/saved-articles", async (req, res) => {
+router.post("/post-movies", async (req, res) => {
   try {
-    const articles = await Article.find();
-    res.json(articles);
+    const movie = new Movie({
+      
+      id: req.body.id,
+      title: req.body.title,
+      year: req.body.year,
+      genres: req.body.genres,
+      plot: req.body.plot,
+      image: req.body.image
+    });
+    await movie.save();
+    res.status(201).send("Movie saved successfully");
   } catch (error) {
     console.error(error);
     res.status(500).send("Server error");
   }
 });
 
-router.delete("/saved-articles/:id", async (req, res) => {
+router.get("/saved-movies", async (req, res) => {
   try {
-    await Article.findByIdAndDelete(req.params.id);
-    res.send("Article deleted successfully");
+    const movies = await Movie.find();
+    res.json(movies);
   } catch (error) {
     console.error(error);
     res.status(500).send("Server error");
   }
 });
 
+router.delete("/delete-movies/:id", async (req, res) => {
+  try {
+    await Movie.findByIdAndDelete(req.params.id);
+    res.send("Movie deleted successfully");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server error");
+  }
+});
 module.exports = router;
