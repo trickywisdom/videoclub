@@ -9,8 +9,7 @@ const movieSchema = new mongoose.Schema(
     Genre: String,
     Plot: String,
     Poster: String,
-  },
-  { collection: "mvp" }
+  }
 );
 
 const Movie = mongoose.model("Movie", movieSchema);
