@@ -2,41 +2,42 @@ import { useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function Signup() {
+function Login() {
   const usernameRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
 
-  async function createNewUser(e) {
+  async function login(e) {
     e.preventDefault();
-    let newUser = {
+    let user = {
       username: usernameRef.current.value,
       password: passwordRef.current.value,
     };
-    let response = await axios.post("http://localhost:8000/signup", newUser);
+    let response = await axios.post("http://localhost:8000/login", user);
     console.log(response);
     // catch an error from database
     if (response.data.msg) {
-      alert(response.data.msg);
+      return alert(response.data.msg);
     }
     // if we receive the token, we save it to localStorage and we have an access to it from all the components 
-    if (response.data.newUser) {
-      // localStorage.setItem("token", response.data);
-      navigate("/");
+    if (response) {
+      localStorage.setItem("token", response.data);
+      navigate("/home");
     }
+
   }
 
   return (
-    <div className="signupformcontainer">
-      <div className="signupform">
-              <form onSubmit={createNewUser}>
-                  <h1>Create account</h1>
+    <div classusername="formcontainer">
+      <div classusername="form">
+        <form onSubmit={login}>
+          <h1>Login</h1>
           <label htmlFor="username"></label>
           <input
             id="username"
             type="text"
             ref={usernameRef}
-            placeholder="Username"
+            placeholder="username"
           />
           <br></br>
           <br></br>
@@ -49,24 +50,22 @@ function Signup() {
           />
           <br />
           <br />
-          {/* <label htmlFor="checkbox"></label>
-          <input type="checkbox" />
-          <span class="checkmark">
-            I agree with the{" "}
-            <a href="/terms" id="checkmark">
-              terms & conditions
-            </a>
-            <br></br>for the contest
-          </span>
-          <br />
-          <br /> */}
           <button type="submit">
-            <span>Sign Up</span>
+            <span>Login</span>
           </button>
+          <br />
+          <br />
+
+          <span>
+            New user?{" "}
+            <a href="/signup">
+              create account
+            </a>
+          </span>
         </form>
       </div>
     </div>
   );
 }
 
-export default Signup;
+export default Login;

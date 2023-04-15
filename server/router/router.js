@@ -6,6 +6,8 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const Movie = require("../model/model");
 const Usedmovie = require("../model/model")
+const verifyToken = require("../Middleware/auth");
+// we use it like this: router.get("/movie", verifyToken, async (req, res) => {
 
 let saltRounds = Number(process.env.SALTY_ROUNDS);
 
@@ -83,15 +85,15 @@ router.post("/signup", async (req, res) => {
       return res.send({ msg: "username already exists" });
     } else {
       let hashedPassword = await bcrypt.hash(password, saltRounds);
+      // HERE maybe we'll need the favourite movies empty or null
       let newUser = await Usedmovie.create({
         username,
         password: hashedPassword,
-        // HERE maybe we'll need the favourite movies empty or null
       });
       return res.send({ msg: "Registered successfully. Welcome!", newUser });
     }
   } catch (error) {
-    res.status(500).json({ msg: "Cannot register. Please try again later." });
+    res.status(500).json({ msg: "Cannot register. Please try again later.", error });
   }
 });
 
