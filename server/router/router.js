@@ -4,8 +4,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const Movie = require("../model/model");
-const Usedmovie = require("../model/model")
+const { Movie, User } = require("../model/model");
 const verifyToken = require("../Middleware/auth");
 // we use it like this: router.get("/movie", verifyToken, async (req, res) => {
 
@@ -34,19 +33,26 @@ router.get("/movie", async (req, res) => {
   }
 });
 
-router.post("/post-movies", async (req, res) => {
+router.post("/post-movies/:id", async (req, res) => {
+
   try {
-    const movie = new Movie({
-      
-      id: req.body.id,
-      title: req.body.title,
-      year: req.body.year,
-      genres: req.body.genres,
-      plot: req.body.plot,
-      image: req.body.image
-    });
-    await movie.save();
-    res.status(201).send("Movie saved successfully");
+    const user = await User.findOne();
+    let { id, title, year, genres, plot, image } = req.body;
+    let newMovie = {
+      id,
+      title,
+      year,
+      genres,
+      plot,
+      image,
+    };
+    user.updateOne(
+      { _id: user._id },
+      { $push: { favoriteMovies: newMovie } }
+   )
+    console.log(user);
+    console.log(user.favoriteMovies);
+    return res.send({ msg: "Movie saved successfully. Welcome!", newMovie });
   } catch (error) {
     console.error(error);
     res.status(500).send("Server error");
@@ -73,6 +79,16 @@ router.delete("/delete-movies/:id", async (req, res) => {
   }
 });
 
+router.get("/users/:id", async (req, res) => {
+  try {
+    const user = await User.findOne();
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server error");
+  }
+});
+
 // SIGN UP router and controller
 router.post("/signup", async (req, res) => {
   try {
@@ -80,20 +96,22 @@ router.post("/signup", async (req, res) => {
     if (!username || !password) {
       return res.send({ msg: "Both username and password are required" });
     }
-    let userFound = await Usedmovie.findOne({ username });
+    let userFound = await User.findOne({ username });
     if (userFound) {
       return res.send({ msg: "username already exists" });
     } else {
       let hashedPassword = await bcrypt.hash(password, saltRounds);
       // HERE maybe we'll need the favourite movies empty or null
-      let newUser = await Usedmovie.create({
+      let newUser = await User.create({
         username,
         password: hashedPassword,
       });
       return res.send({ msg: "Registered successfully. Welcome!", newUser });
     }
   } catch (error) {
-    res.status(500).json({ msg: "Cannot register. Please try again later.", error });
+    res
+      .status(500)
+      .json({ msg: "Cannot register. Please try again later.", error });
   }
 });
 
@@ -104,7 +122,7 @@ router.post("/login", async (req, res) => {
     if (!username || !password) {
       return res.send({ msg: "Both username and password are required" });
     }
-    let userFound = await Usedmovie.findOne({ username });
+    let userFound = await User.findOne({ username });
     if (!userFound) {
       return res.send({ msg: "Invalid username" });
     } else {
