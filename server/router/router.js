@@ -73,10 +73,10 @@ router.put("/save-movie/:id", async (req, res) => {
   let userid = req.params.id;
   let user = await User.findById(userid);
   await User.findOneAndUpdate(
-   { _id: userid }, 
-   { $push: { favoriteMovies: newMovie  } },
-)
-      return res.send(user);
+    { _id: userid },
+    { $addToSet: { favoriteMovies: newMovie } }
+  );
+      return res.send(newMovie);
     });
 
 router.get("/saved-movies", async (req, res) => {

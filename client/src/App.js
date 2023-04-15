@@ -10,8 +10,8 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/home" element={<MoviesForm />} />
+        <Route path="/" element={<MoviesForm />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
     </>
