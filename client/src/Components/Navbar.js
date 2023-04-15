@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
 function Navbar() {
@@ -21,9 +21,9 @@ function Navbar() {
   function checkToken() {
     try {
       if (!token) {
-        navigate("/");
+        navigate("/login");
       } else {
-        navigate("/home");
+        navigate("/");
       }
     } catch (error) {
       console.log(error);
@@ -33,6 +33,10 @@ function Navbar() {
 
   function logout() {
     localStorage.removeItem("token");
+  }
+
+  if (!token) {
+    return <Navigate to="/login" />;
   }
   
   return (
@@ -45,7 +49,7 @@ function Navbar() {
           <>
             <Link to="#">{decoded ? decoded.username : null}</Link>
             <Link to="#">Saved Movies</Link>
-            <Link onClick={logout} to="/">
+            <Link onClick={logout} to="/login">
               Logout
             </Link>
           </>
