@@ -22,7 +22,7 @@ function Login() {
     // if we receive the token, we save it to localStorage and we have an access to it from all the components 
     if (response) {
       localStorage.setItem("token", response.data);
-      navigate("/home");
+      navigate("/");
     }
 
   }
