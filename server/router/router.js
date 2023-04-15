@@ -59,6 +59,26 @@ router.post("/post-movies/:id", async (req, res) => {
   }
 });
 
+router.put("/save-movie/:id", async (req, res) => {
+
+  let { id, title, year, genres, plot, image } = req.body;
+  let newMovie = {
+    id,
+    title,
+    year,
+    genres,
+    plot,
+    image,
+  };
+  let userid = req.params.id;
+  let user = await User.findById(userid);
+  await User.findOneAndUpdate(
+   { _id: userid }, 
+   { $push: { favoriteMovies: newMovie  } },
+)
+      return res.send(user);
+    });
+
 router.get("/saved-movies", async (req, res) => {
   try {
     const movies = await Movie.find();
@@ -86,6 +106,15 @@ router.get("/users/:id", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).send("Server error");
+  }
+});
+
+router.get("/all", async (req, res) => {
+  try {
+    const allusers = await User.find();
+    res.send(allusers);
+  } catch (error) {
+    res.send(error);
   }
 });
 
