@@ -17,14 +17,14 @@ router.get("/movie", async (req, res) => {
       `https://imdb-api.com/en/API/SearchMovie/${process.env.IMDB_API_KEY}/${title}`
     );
     const movieData = response.data;
-    ({
-      id: movieData.id,
-      title: movieData.title,
-      year: movieData.year,
-      genres: movieData.genres,
-      plot: movieData.plot,
-      image: movieData.image,
-    });
+    // ({
+    //   id: movieData.id,
+    //   title: movieData.title,
+    //   year: movieData.year,
+    //   genres: movieData.genres,
+    //   plot: movieData.plot,
+    //   image: movieData.image,
+    // });
 
     res.json(movieData);
   } catch (error) {
@@ -59,39 +59,60 @@ router.post("/post-movies/:id", async (req, res) => {
   }
 });
 
-router.put("/save-movie/:id", async (req, res) => {
-
-  let { id, title, year, genres, plot, image } = req.body;
+// the Save button. Add the movie as a favourite to the specific user
+router.put("/save-movie", verifyToken, async (req, res) => {
+// console.log(req.user);
+  let { id, title, description, image } = req.body;
   let newMovie = {
     id,
     title,
-    year,
-    genres,
-    plot,
+    description,
     image,
   };
-  let userid = req.params.id;
-  let user = await User.findById(userid);
+  let userid = req.user.userId;
+  // let user = await User.findById(userid);
   await User.findOneAndUpdate(
     { _id: userid },
     { $addToSet: { favoriteMovies: newMovie } }
   );
-      return res.send(newMovie);
+  return res.send({ msg: "New favourite movie added!", newMovie });
     });
 
-router.get("/saved-movies", async (req, res) => {
+router.get("/saved-movies", verifyToken, async (req, res) => {
   try {
-    const movies = await Movie.find();
-    res.json(movies);
+    let userid = req.user.userId;
+    let user = await User.findById(userid);
+    let allsavedmovies = user.favoriteMovies;
+    res.json(allsavedmovies);
   } catch (error) {
     console.error(error);
     res.status(500).send("Server error");
   }
 });
 
-router.delete("/delete-movies/:id", async (req, res) => {
+router.delete("/delete-movie/:id", verifyToken, async (req, res) => {
   try {
-    await Movie.findByIdAndDelete(req.params.id);
+    let movieid = req.params.id;
+    let userid = req.user.userId;
+    // console.log(movieid);
+    // console.log(userid);
+    // await User.findOneAndUpdate(
+    //   { _id: userid },
+    //   { $pull: { favoriteMovies: movieid } }
+    // );
+    
+    let user = await User.findById(userid);
+    let allsavedmovies = user.favoriteMovies;
+    for (let i = 0; i < allsavedmovies.length; i++) {
+      if (movieid === allsavedmovies[i].id) {
+        // allsavedmovies.splice(i, 1);
+        // user.favoriteMovies = allsavedmovies;
+        await User.findOneAndUpdate(
+          { _id: userid },
+          { $pull: { favoriteMovies: allsavedmovies[i] } }
+        );
+      }
+    }
     res.send("Movie deleted successfully");
   } catch (error) {
     console.error(error);
@@ -109,7 +130,7 @@ router.get("/users/:id", async (req, res) => {
   }
 });
 
-router.get("/all", verifyToken, async (req, res) => {
+router.get("/all", async (req, res) => {
   try {
     const allusers = await User.find();
     res.send(allusers);
