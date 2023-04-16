@@ -25,13 +25,13 @@ const [quote, setQuote] = useState("");
 
     async function getQuote() {
       let response = await axios.get("http://localhost:8000/randomquote");
-        console.log(response);
+        // console.log(response);
         setQuote(response.data)
     }
 
     useEffect(() => {
         getQuote();
-        console.log("i fire once");
+        // console.log("i fire once");
     }, []);
 
     return (
