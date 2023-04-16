@@ -1,11 +1,16 @@
 import { useRef } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 function Signup() {
   const usernameRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+if (token) {
+  return <Navigate to="/" />;
+}
 
   async function createNewUser(e) {
     e.preventDefault();
@@ -19,9 +24,8 @@ function Signup() {
     if (response.data.msg) {
       alert(response.data.msg);
     }
-    // if we receive the token, we save it to localStorage and we have an access to it from all the components 
+    // after sign up, we navigate to the login page
     if (response.data.newUser) {
-      // localStorage.setItem("token", response.data);
       navigate("/login");
     }
   }
@@ -29,8 +33,8 @@ function Signup() {
   return (
     <div className="signupformcontainer">
       <div className="signupform">
-              <form onSubmit={createNewUser}>
-                  <h1>Create account</h1>
+        <form onSubmit={createNewUser}>
+          <h1>Create account</h1>
           <label htmlFor="username"></label>
           <input
             id="username"
@@ -49,20 +53,14 @@ function Signup() {
           />
           <br />
           <br />
-          {/* <label htmlFor="checkbox"></label>
-          <input type="checkbox" />
-          <span class="checkmark">
-            I agree with the{" "}
-            <a href="/terms" id="checkmark">
-              terms & conditions
-            </a>
-            <br></br>for the contest
-          </span>
-          <br />
-          <br /> */}
           <button type="submit">
             <span>Sign Up</span>
           </button>
+          <br />
+          <br />
+          <span>
+            Already have an account with us? Please <a href="/login">log in</a>
+          </span>
         </form>
       </div>
     </div>

@@ -4,7 +4,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const { Movie, User } = require("../model/model");
+const { Movie, User, Quote } = require("../model/model");
 const verifyToken = require("../Middleware/auth");
 // we use it like this: router.get("/movie", verifyToken, async (req, res) => {
 
@@ -109,10 +109,53 @@ router.get("/users/:id", async (req, res) => {
   }
 });
 
-router.get("/all", async (req, res) => {
+router.get("/all", verifyToken, async (req, res) => {
   try {
     const allusers = await User.find();
     res.send(allusers);
+  } catch (error) {
+    res.send(error);
+  }
+});
+
+router.get("/intheaters", async (req, res) => {
+  try {
+    const title = req.query.title;
+    const response = await axios.get(
+      `https://imdb-api.com/en/API/InTheaters/${process.env.IMDB_API_KEY}/`
+    );
+    const intheaters = response.data.items;
+    const randomintheaters =
+      intheaters[Math.floor(Math.random() * intheaters.length)];
+    res.send(randomintheaters);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server Error");
+  }
+});
+
+
+router.get("/comingsoon", async (req, res) => {
+  try {
+    const title = req.query.title;
+    const response = await axios.get(
+      `https://imdb-api.com/en/API/ComingSoon/${process.env.IMDB_API_KEY}/`
+    );
+    const allcomingmovies = response.data.items;
+    const randomcomingsoon =
+      allcomingmovies[Math.floor(Math.random() * allcomingmovies.length)];
+    res.send(randomcomingsoon);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server Error");
+  }
+});
+
+router.get("/randomquote", async (req, res) => {
+  try {
+    const allquotes = await Quote.find();
+    const randomquote = allquotes[Math.floor(Math.random() * allquotes.length)];
+    res.send(randomquote);
   } catch (error) {
     res.send(error);
   }
