@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
+
 function Searchresults() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
@@ -77,6 +78,7 @@ function Searchresults() {
           onChange={(e) => setQuery(e.target.value)}
         />
         <button className="buttonSubmit" type='submit'>Submit</button>
+        <img src="https://whatthefrance.org/wp-content/uploads/2021/01/Videoclub-300x120.png" className="logo" />
       </form>
       {results.length > 0 && (
       <div className='searchresults'>
