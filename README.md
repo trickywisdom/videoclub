@@ -1,47 +1,47 @@
-# videoclub
+<h1 align="center">Welcome to Green Videoclub App 👋</h1>
+<p>
+  <a href="https://www.npmjs.com/package/client" target="_blank">
+    <img alt="Version" src="https://img.shields.io/npm/v/client.svg">
+  </a>
+  <a href="https://github.com/Group1-Greenfield-Ioannis-Spyros/videoclub#readme" target="_blank">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
+  </a>
+  <a href="https://github.com/Group1-Greenfield-Ioannis-Spyros/videoclub/graphs/commit-activity" target="_blank">
+    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
+  </a>
+</p>
 
-- Server.js & connection.js (optimal)
+> Videoclub App client
 
-1. ### Schemas, Models (server)
-(need to finish the videos to know what exactly we need, but we can go with basics for now)
+### 🏠 [Homepage](https://netlify.com/green-videoclub-app)
 
-### Routers - Controllers (server)
-(will need login and sign up routers - CONFLICT)
-- get movies from API based on search
-- save movie
-- delete movie
-- login
-- sign up
-- movie of the day
+## Install
 
-### Authentication - Authorization - Token - Protected URLs (server and react)
-(Protected URLs can be a confict)
-- validation server
-- validation react
+```sh
+npm install
+```
 
-### Sign In form or page or modal (react component)
+## Usage
 
-### Sign Up page (react component)
+```sh
+npm run start
+```
 
-### Navbar.js (react component)
+## Run tests
 
-### react-router-dom
+```sh
+npm run test
+```
 
-### Break the code to Components
-(because we need to render different things to different pages... or do we? :)
+## Author
 
-### README.md
+👤 **Spyros Trimis, Ioannis Skardasis**
 
-### Documentation & Comments inside the code
+* Github: [@Group1-Greenfield-Ioannis-Spyros](https://github.com/Group1-Greenfield-Ioannis-Spyros)
 
-### Styling CSS
+## Show your support
 
-### Deploy to Netlify, Render etc
+Give a ⭐️ if this project helped you!
 
-### Presentation
-
-- Fetching from server or client?
-
-- const [query, setQuery] = useState("") => useRef()
-
-- pagination (too many movies, how to show them?)
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
