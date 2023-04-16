@@ -1,56 +1,75 @@
 @font-face {
-    font-family: 'Franklin Gothic Regular';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Franklin Gothic Regular'), url('./Fonts/FranklinGothic.woff') format('woff');
-    }
-    
+  font-family: "Franklin Gothic Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Franklin Gothic Regular"),
+    url("./Fonts/FranklinGothic.woff") format("woff");
+}
 
-    @font-face {
-    font-family: 'Franklin Gothic Condensed';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Franklin Gothic Condensed'), url('./Fonts/FRANKGO.woff') format('woff');
-    }
-    
+@font-face {
+  font-family: "Franklin Gothic Condensed";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Franklin Gothic Condensed"),
+    url("./Fonts/FRANKGO.woff") format("woff");
+}
 
-    @font-face {
-    font-family: 'Franklin Gothic Condensed';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Franklin Gothic Condensed'), url('./Fonts/FranklinGothicCondensed.woff') format('woff');
-    }
-    
+@font-face {
+  font-family: "Franklin Gothic Condensed";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Franklin Gothic Condensed"),
+    url("./Fonts/FranklinGothicCondensed.woff") format("woff");
+}
 
-    @font-face {
-    font-family: 'Franklin Gothic ITALIC';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Franklin Gothic ITALIC'), url('./Fonts/FranklinGothicITALIC.woff') format('woff');
-    }
-    
+@font-face {
+  font-family: "Franklin Gothic ITALIC";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Franklin Gothic ITALIC"),
+    url("./Fonts/FranklinGothicITALIC.woff") format("woff");
+}
 
-    @font-face {
-    font-family: 'Franklin Gothic ITALIC';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Franklin Gothic ITALIC'), url('./Fonts/fgwo____.woff') format('woff');
-    }
+@font-face {
+  font-family: "Franklin Gothic ITALIC";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Franklin Gothic ITALIC"),
+    url("./Fonts/fgwo____.woff") format("woff");
+}
 
-body, html {
-  font-family: 'Franklin Gothic ITALIC', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-family: "Franklin Gothic", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+body,
+html {
+  font-family: "Franklin Gothic ITALIC", "Franklin Gothic Medium",
+    "Arial Narrow", Arial, sans-serif;
+  font-family: "Franklin Gothic", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
   margin: 0;
-  width: 100vw;
-    height: 100%;
-    min-height: 100%;
-    box-sizing: border-box;
-    /* overflow-x: hidden;
+  /* width: 100vw;
+  height: 100%; */
+  min-height: 100%;
+  box-sizing: border-box;
+  /* overflow-x: hidden;
     overflow-y: hidden; */
 }
 
 body {
-    background-image: linear-gradient(to right bottom, #ffd700, #bde648, #7deb82, #38ebb7, #00e5df, #00deed, #00d5f8, #00ccff, #00c1ff, #62afff, #b891ff, #ff62ff);
+  background-image: linear-gradient(
+    to right bottom,
+    #ffd700,
+    #bde648,
+    #7deb82,
+    #38ebb7,
+    #00e5df,
+    #00deed,
+    #00d5f8,
+    #00ccff,
+    #00c1ff,
+    #62afff,
+    #b891ff,
+    #ff62ff
+  );
   background-color: #000000; /* Used if the image is unavailable */
   /* background-position: center;
   background-repeat: no-repeat;
@@ -59,75 +78,75 @@ body {
 
 .navbar {
   display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 0px 10px 10px 10px;
-    margin: 20px;
-    /* background-color: #eee; */
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0px 10px 10px 10px;
+  margin: 20px;
+  /* background-color: #eee; */
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .navbar a {
   text-decoration: none;
-    padding: 10px;
-    font-weight: 600;
+  padding: 10px;
+  font-weight: 600;
 }
 
 .signupformcontainer {
-    max-width: 540px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 25vh;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25vh;
 }
 
 .signupform {
-    /* max-width: 300px; */
-    text-align: center;
-    margin-top: 60px;
-    /* background-color: #ffffff89; */
-    padding: 25px 40px;
-    padding: 40px 50px;
-    padding-top: 35px;
-    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.45);
-    -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.45);
-    -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.45);
+  /* max-width: 300px; */
+  text-align: center;
+  margin-top: 60px;
+  /* background-color: #ffffff89; */
+  padding: 25px 40px;
+  padding: 40px 50px;
+  padding-top: 35px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+  -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
 }
 
 .signupform h1 {
-    margin-bottom: 35px;
+  margin-bottom: 35px;
 }
 
 input {
-    min-width: 280px;
-    min-height: 40px;
-    border: none;
-    border-radius: 4px;
-    border: solid 1.5px #929292;
+  min-width: 280px;
+  min-height: 40px;
+  border: none;
+  border-radius: 4px;
+  border: solid 1.5px #929292;
 }
 
 input:focus-visible {
-    outline-color: #2FF598;
-    outline-offset: inherit;
-    outline-style: solid;
-    outline-width: thin;
-    border: solid 1px #2FF598;
+  outline-color: #2ff598;
+  outline-offset: inherit;
+  outline-style: solid;
+  outline-width: thin;
+  border: solid 1px #2ff598;
 }
 
 input[type="checkbox"] {
   min-width: inherit;
-    min-height: inherit;
-    margin: 5px;
+  min-height: inherit;
+  margin: 5px;
 }
 
 input[type="text" i] {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
 a#checkmark {
-    color: #f6f6f6;
-    text-decoration: none;
+  color: #f6f6f6;
+  text-decoration: none;
 }
 
 .signupform button {
@@ -136,21 +155,22 @@ a#checkmark {
 }
 
 .signupform button span {
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: 600;
-    color: white;
-    text-shadow: -1px -1px 0 #303030, 1px -1px 0 #303030, -1px 1px 0 #303030, 1px 1px 0 #303030;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: 600;
+  color: white;
+  text-shadow: -1px -1px 0 #303030, 1px -1px 0 #303030, -1px 1px 0 #303030,
+    1px 1px 0 #303030;
 }
 
 .quotescontainer {
   max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .quote {
@@ -160,9 +180,114 @@ a#checkmark {
 
 .quote p {
   font-family: monospace;
-    font-style: italic;
+  font-style: italic;
 }
 
 .searchresults {
+  margin-top: 70px;
+  margin-right: 20px;
+  margin-left: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+}
 
+.result-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 20px;
+}
+
+.result-image {
+  width: 100%;
+  height: auto;
+}
+
+.result-info {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-gap: 10px;
+}
+
+.result-title {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.result-save {
+  background-color: #f8b500;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.result-save:hover {
+  background-color: #e6a300;
+}
+
+.submitForm {
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+.saved-movies {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+  margin-top: 70px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.saved-movie-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 20px;
+}
+
+.saved-movie-image {
+  width: 100%;
+  height: auto;
+}
+
+.saved-movie-info {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-gap: 10px;
+}
+
+.saved-movie-title {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.saved-movie-delete {
+  background-color: #f8b500;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.saved-movie-delete:hover {
+  background-color: #e6a300;
+}
+
+.buttonSubmit {
+  background-color: #f8b500;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 20px;
+}
+.buttonSubmit:hover {
+  background-color: #e6a300;
 }
