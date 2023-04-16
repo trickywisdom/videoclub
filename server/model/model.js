@@ -11,6 +11,14 @@ const movieSchema = new mongoose.Schema({
 
 });
 
+const quoteSchema = new mongoose.Schema({
+  quote: String,
+  character: String,
+  quoteFrom: String,
+  actor: String,
+  year: Number,
+});
+
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
@@ -22,4 +30,6 @@ const Movie = mongoose.model("Movie", movieSchema);
 
 const User = mongoose.model("User", userSchema);
 
-module.exports = { Movie, User };
+const Quote = mongoose.model("Quote", quoteSchema);
+
+module.exports = { Movie, User, Quote };

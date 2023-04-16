@@ -1,11 +1,17 @@
 import { useRef } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, Navigate } from "react-router-dom";
 
 function Login() {
   const usernameRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
+  const { state } = useLocation();
+  const { from = "/" } = state || {};
+  const token = localStorage.getItem("token");
+  if (token) {
+    return <Navigate to="/" />;
+  }
 
   async function login(e) {
     e.preventDefault();
@@ -14,17 +20,16 @@ function Login() {
       password: passwordRef.current.value,
     };
     let response = await axios.post("http://localhost:8000/login", user);
-    console.log(response);
+    console.log("from Login.js",response);
     // catch an error from database
     if (response.data.msg) {
       return alert(response.data.msg);
     }
-    // if we receive the token, we save it to localStorage and we have an access to it from all the components 
+    // if we receive the token, we save it to localStorage and we have an access to it from all the components
     if (response) {
       localStorage.setItem("token", response.data);
-      navigate("/");
+      navigate(from);
     }
-
   }
 
   return (
@@ -57,10 +62,7 @@ function Login() {
           <br />
 
           <span>
-            New user?{" "}
-            <a href="/signup">
-              create account
-            </a>
+            New user? <a href="/signup">create account</a>
           </span>
         </form>
       </div>

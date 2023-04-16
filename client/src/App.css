@@ -102,3 +102,22 @@ a#checkmark {
     color: white;
     text-shadow: -1px -1px 0 #303030, 1px -1px 0 #303030, -1px 1px 0 #303030, 1px 1px 0 #303030;
 }
+
+.quotescontainer {
+  max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.quote {
+  text-align: right;
+  max-width: 500px;
+}
+
+.quote p {
+  font-family: monospace;
+    font-style: italic;
+}
