@@ -18,7 +18,7 @@ function Savedmovies() {
   useEffect(() => {
     getAllMovies();
     console.log("i fire once");
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   async function deleteMovie(movie_id) {
     try {
