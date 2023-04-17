@@ -81,27 +81,6 @@ function Searchresults() {
         <img src="https://whatthefrance.org/wp-content/uploads/2021/01/Videoclub-300x120.png" className="logo" />
       </form>
       {results.length > 0 && (
-<<<<<<< HEAD
-        <div className="searchresults">
-          {results.map((result) => (
-            <div key={result.id}>
-              <h2>{result.title}</h2>
-              <img
-                src={result.image}
-                      style={{ width: "auto", height: 150, padding: 10 }}
-                      alt="poster"
-              />
-              <p>{result.description}</p>
-              {/* <p>
-                <a href={result.url} target="_blank" rel="noopener noreferrer">
-                  {result.url}
-                </a>
-              </p> */}
-              {/* <p>{result.publishedAt}</p> */}
-              <button onClick={() => saveMovie(result)}>Save</button>
-            </div>
-          ))}
-=======
       <div className='searchresults'>
       {results.map((result) => (
         <div key={result.id} className='result-container'>
@@ -117,7 +96,6 @@ function Searchresults() {
               Save
             </button>
           </div>
->>>>>>> 36b066e5ff43894c9dfd52a585da8735eea1dd73
         </div>
       ))}
     </div>
