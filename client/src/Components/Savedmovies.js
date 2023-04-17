@@ -46,33 +46,23 @@ function Savedmovies() {
 
   return (
     <div>
-      {/* <button onClick={getAllMovies}>Get all saved movies</button> */}
       {savedMovies.length > 0 && (
-        <ul className='saved-movies'>
+        <ul className="saved-movies">
           {savedMovies.map((savedMovie) => (
-            <li key={savedMovie.id} className='saved-movie-container'>
+            <li key={savedMovie.id} className="saved-movie-container">
               <img
                 src={savedMovie.image}
-                className='saved-movie-image'
-                alt='poster'
+                className="saved-movie-image"
+                alt="poster"
               />
-              <div className='saved-movie-info'>
-                <h2 className='saved-movie-title'>{savedMovie.title}</h2>
-                <p className='saved-movie-description'>
+              <div className="saved-movie-info">
+                <h2 className="saved-movie-title">{savedMovie.title}</h2>
+                <p className="saved-movie-description">
                   {savedMovie.description}
                 </p>
-                {/* <p>
-                  <a
-                    href={savedMovie.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {savedMovie.url}
-                  </a>
-                </p> */}
-                {/* <p>{savedMovie.publishedAt}</p> */}
+
                 <button
-                  className='saved-movie-delete'
+                  className="saved-movie-delete"
                   onClick={() => deleteMovie(savedMovie.id)}
                 >
                   Delete
