@@ -82,7 +82,7 @@ function Searchresults() {
           onChange={(e) => setQuery(e.target.value)}
         />
         <button className="buttonSubmit" type='submit'>Submit</button>
-        {!dataSubmitted &&<img src="https://whatthefrance.org/wp-content/uploads/2021/01/Videoclub-300x120.png" className="logo" />}
+        {!dataSubmitted &&<img src="https://whatthefrance.org/wp-content/uploads/2021/01/Videoclub-300x120.png" className="logo" alt="logo"/>}
       </form>
       {results.length > 0 && (
       <div className='searchresults'>
