@@ -1,10 +1,11 @@
+// The purpose of this code is to create a React component that allows users to search for movies and save them. The component renders a form with an input field and a submit button, which sends a GET request to the server with the query parameter. It also renders a list of movie search results if results is not empty, each with its own "Save" button that sends a PUT request to the server with the movie data and user's authorization token.
+
 import { useState } from "react";
 import axios from "axios";
 
 function Searchresults() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
-  const [savedArticles, setSavedArticles] = useState([]);
   const [dataSubmitted, setDataSubmitted] = useState(false);
 
   let token = localStorage.getItem("token");
@@ -13,10 +14,13 @@ function Searchresults() {
     e.preventDefault();
 
     let response = await axios.get(
-      `http://localhost:8000/movie?title=${query}`
+      `http://localhost:8000/movie?title=${query}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
-    console.log(response);
-    console.log(response.data.results);
 
     setDataSubmitted(true);
 
@@ -25,12 +29,6 @@ function Searchresults() {
     } else {
       setResults([]);
     }
-  }
-
-  async function getAllNews() {
-    let response = await axios.get("http://localhost:8000/saved-articles");
-    console.log(`Server response:`, response);
-    setSavedArticles(response.data);
   }
 
   // SAVE BUTTON
@@ -52,55 +50,37 @@ function Searchresults() {
     }
   }
 
-  async function deleteArticle(_id) {
-    try {
-      let response = await axios.delete(
-        `http://localhost:8000/saved-articles/${_id}`
-      );
-      console.log("Server response: ", response);
-      if (response.status === 200) {
-        alert("Article deleted successfully!");
-        getAllNews();
-      } else {
-        alert("Error deleting article");
-      }
-    } catch (error) {
-      console.log("Error deleting article: ", error);
-      alert("Error deleting article");
-    }
-  }
-
   return (
     <>
-      <form className="submitForm" onSubmit={fetchMovies}>
-        <label htmlFor="input">Search for a movie title:</label>
+      <form className='submitForm' onSubmit={fetchMovies}>
+        <label htmlFor='input'>Search for a movie title:</label>
         <input
-          id="input"
-          type="text"
+          id='input'
+          type='text'
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button className="buttonSubmit" type="submit">
+        <button className='buttonSubmit' type='submit'>
           Submit
         </button>
         {!dataSubmitted && (
           <img
-            src="https://whatthefrance.org/wp-content/uploads/2021/01/Videoclub-300x120.png"
-            className="logo"
-            alt="logo"
+            src='https://whatthefrance.org/wp-content/uploads/2021/01/Videoclub-300x120.png'
+            className='logo'
+            alt='logo'
           />
         )}
       </form>
       {results.length > 0 && (
-        <div className="searchresults">
+        <div className='searchresults'>
           {results.map((result) => (
-            <div key={result.id} className="result-container">
-              <img src={result.image} className="result-image" alt="poster" />
-              <div className="result-info">
-                <h2 className="result-title">{result.title}</h2>
-                <p className="result-description">{result.description}</p>
+            <div key={result.id} className='result-container'>
+              <img src={result.image} className='result-image' alt='poster' />
+              <div className='result-info'>
+                <h2 className='result-title'>{result.title}</h2>
+                <p className='result-description'>{result.description}</p>
                 <button
-                  className="result-save"
+                  className='result-save'
                   onClick={() => saveMovie(result)}
                 >
                   Save
@@ -110,32 +90,6 @@ function Searchresults() {
           ))}
         </div>
       )}
-      <div>
-        {/* <button onClick={getAllNews}>Get all saved news</button> */}
-        {savedArticles.length > 0 && (
-          <ul>
-            {savedArticles.map((savedArticle) => (
-              <li key={savedArticle._id}>
-                <h2>{savedArticle.title}</h2>
-                <p>{savedArticle.description}</p>
-                <p>
-                  <a
-                    href={savedArticle.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {savedArticle.url}
-                  </a>
-                </p>
-                <p>{savedArticle.publishedAt}</p>
-                <button onClick={() => deleteArticle(savedArticle._id)}>
-                  Delete
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
     </>
   );
 }

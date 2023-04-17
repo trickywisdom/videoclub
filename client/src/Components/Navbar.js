@@ -1,3 +1,4 @@
+// Navbar component provides a user interface for navigating to different pages based on the authentication status of the user.
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";

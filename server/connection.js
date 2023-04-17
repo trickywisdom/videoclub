@@ -1,3 +1,5 @@
+// The purpose of this code is to connect to a MongoDB database using the Mongoose library. It also provides error handling in case the connection fails.
+
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 

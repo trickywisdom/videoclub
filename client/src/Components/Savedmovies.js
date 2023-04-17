@@ -1,3 +1,5 @@
+// The purpose of this code is to define a React component that renders a list of saved movies and provides a delete button for each movie. The list of saved movies is fetched from the server and stored in the component state using the useState hook. The deleteMovie function is called when the delete button is clicked, which sends a DELETE request to the server to delete the movie with the specified movie_id. If there is an error, an error message is displayed.
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -11,13 +13,12 @@ function Savedmovies() {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(response);
+
     setSavedMovies(response.data);
   }
 
   useEffect(() => {
     getAllMovies();
-    console.log("i fire once");
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   async function deleteMovie(movie_id) {
@@ -46,24 +47,23 @@ function Savedmovies() {
 
   return (
     <div>
-
       {savedMovies.length > 0 && (
-        <ul className="saved-movies">
+        <ul className='saved-movies'>
           {savedMovies.map((savedMovie) => (
-            <li key={savedMovie.id} className="saved-movie-container">
+            <li key={savedMovie.id} className='saved-movie-container'>
               <img
                 src={savedMovie.image}
-                className="saved-movie-image"
-                alt="poster"
+                className='saved-movie-image'
+                alt='poster'
               />
-              <div className="saved-movie-info">
-                <h2 className="saved-movie-title">{savedMovie.title}</h2>
-                <p className="saved-movie-description">
+              <div className='saved-movie-info'>
+                <h2 className='saved-movie-title'>{savedMovie.title}</h2>
+                <p className='saved-movie-description'>
                   {savedMovie.description}
                 </p>
 
                 <button
-                  className="saved-movie-delete"
+                  className='saved-movie-delete'
                   onClick={() => deleteMovie(savedMovie.id)}
                 >
                   Delete

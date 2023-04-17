@@ -1,3 +1,5 @@
+// The purpose of this code is to create a React component that renders a login form and handles the user authentication process. It checks if there is a token in the local storage, sends an HTTP request to the server with the username and password, saves the token to the local storage if it receives one, and navigates the user back to their previous page.
+
 import { useRef } from "react";
 import axios from "axios";
 import { useNavigate, useLocation, Navigate } from "react-router-dom";
@@ -20,8 +22,7 @@ function Login() {
       password: passwordRef.current.value,
     };
     let response = await axios.post("http://localhost:8000/login", user);
-    console.log("from Login.js",response);
-    // catch an error from database
+    
     if (response.data.msg) {
       return alert(response.data.msg);
     }

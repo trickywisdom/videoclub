@@ -17,26 +17,24 @@ IMDB API: Used to fetch movie data
 JWT: Tokenization of user login
 Installation
 Clone the repository using the command below:
-bash
-Copy code
+
 git clone https://github.com/<username>/video-club.git
 Install dependencies for the frontend and backend using the following command in both the client and server directories:
-Copy code
+
 npm install
 Create a .env file in the server directory and add the following variables:
 makefile
-Copy code
+
 NODE_ENV=development
 PORT=<port-number>
 MONGODB_URI=<mongodb-uri>
 JWT_SECRET=<jwt-secret>
 Start the application using the following command in the server directory:
-arduino
-Copy code
+
 npm run dev
 Open your browser and navigate to http://localhost:<port-number> to use the application.
 Contributors
-John Doe (@johndoe)
-Jane Doe (@janedoe)
+...........
+...........
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
