@@ -1,9 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 function Savedmovies() {
     const [savedMovies, setSavedMovies] = useState([]);
     let token = localStorage.getItem("token");
+    if (!token) {
+      return <Navigate to="/login" />;
+    }
 
     async function getAllMovies() {
       let response = await axios.get("http://localhost:8000/saved-movies", {

@@ -82,13 +82,13 @@ function Searchresults() {
         <div className="searchresults">
           {results.map((result) => (
             <div key={result.id}>
-              {/* <h2>{result.title}</h2> */}
+              <h2>{result.title}</h2>
               <img
                 src={result.image}
                       style={{ width: "auto", height: 150, padding: 10 }}
                       alt="poster"
               />
-              {/* <p>{result.description}</p> */}
+              <p>{result.description}</p>
               {/* <p>
                 <a href={result.url} target="_blank" rel="noopener noreferrer">
                   {result.url}

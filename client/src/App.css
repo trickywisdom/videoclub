@@ -1,45 +1,7 @@
-@font-face {
-    font-family: 'Franklin Gothic Regular';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Franklin Gothic Regular'), url('./Fonts/FranklinGothic.woff') format('woff');
-    }
-    
-
-    @font-face {
-    font-family: 'Franklin Gothic Condensed';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Franklin Gothic Condensed'), url('./Fonts/FRANKGO.woff') format('woff');
-    }
-    
-
-    @font-face {
-    font-family: 'Franklin Gothic Condensed';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Franklin Gothic Condensed'), url('./Fonts/FranklinGothicCondensed.woff') format('woff');
-    }
-    
-
-    @font-face {
-    font-family: 'Franklin Gothic ITALIC';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Franklin Gothic ITALIC'), url('./Fonts/FranklinGothicITALIC.woff') format('woff');
-    }
-    
-
-    @font-face {
-    font-family: 'Franklin Gothic ITALIC';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Franklin Gothic ITALIC'), url('./Fonts/fgwo____.woff') format('woff');
-    }
-
 body, html {
-  font-family: 'Franklin Gothic ITALIC', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-family: "Franklin Gothic", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, "Franklin Gothic";
+  font-family: 'Raleway', sans-serif;
+  
   margin: 0;
   width: 100vw;
     height: 100%;
@@ -67,12 +29,16 @@ body {
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
+    font-family:'PT Sans Narrow', sans-serif;
+    font-size: 22px;
 }
 
 .navbar a {
   text-decoration: none;
     padding: 10px;
-    font-weight: 600;
+    /* font-weight: 600; */
+    font-family:'PT Sans Narrow', sans-serif;
+    font-size: 22px;
 }
 
 .signupformcontainer {
@@ -161,6 +127,7 @@ a#checkmark {
 .quote p {
   font-family: monospace;
     font-style: italic;
+    font-family:'Times New Roman', Times, serif;
 }
 
 .searchresults {
