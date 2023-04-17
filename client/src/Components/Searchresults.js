@@ -6,6 +6,8 @@ function Searchresults() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [savedArticles, setSavedArticles] = useState([]);
+  const [dataSubmitted, setDataSubmitted] = useState(false);
+
   let token = localStorage.getItem("token");
 
   async function fetchMovies(e) {
@@ -16,6 +18,8 @@ function Searchresults() {
     );
     console.log(response);
     console.log(response.data.results);
+
+    setDataSubmitted(true);
 
     if (response.status === 200) {
       setResults(response.data.results);
@@ -78,7 +82,11 @@ function Searchresults() {
           onChange={(e) => setQuery(e.target.value)}
         />
         <button className="buttonSubmit" type='submit'>Submit</button>
+
+        {!dataSubmitted &&<img src="https://whatthefrance.org/wp-content/uploads/2021/01/Videoclub-300x120.png" className="logo" />}
+
         <img src="https://whatthefrance.org/wp-content/uploads/2021/01/Videoclub-300x120.png" className="logo" alt="logo" />
+
       </form>
       {results.length > 0 && (
       <div className='searchresults'>
