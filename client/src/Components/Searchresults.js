@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 
-
 function Searchresults() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
@@ -74,36 +73,42 @@ function Searchresults() {
   return (
     <>
       <form className="submitForm" onSubmit={fetchMovies}>
-        <label htmlFor='input'>Search for a movie title:</label>
+        <label htmlFor="input">Search for a movie title:</label>
         <input
-          id='input'
-          type='text'
+          id="input"
+          type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button className="buttonSubmit" type='submit'>Submit</button>
-        {!dataSubmitted &&<img src="https://whatthefrance.org/wp-content/uploads/2021/01/Videoclub-300x120.png" className="logo" alt="logo"/>}
+        <button className="buttonSubmit" type="submit">
+          Submit
+        </button>
+        {!dataSubmitted && (
+          <img
+            src="https://whatthefrance.org/wp-content/uploads/2021/01/Videoclub-300x120.png"
+            className="logo"
+            alt="logo"
+          />
+        )}
       </form>
       {results.length > 0 && (
-      <div className='searchresults'>
-      {results.map((result) => (
-        <div key={result.id} className='result-container'>
-          <img
-            src={result.image}
-            className='result-image'
-            alt='poster'
-          />
-          <div className='result-info'>
-            <h2 className='result-title'>{result.title}</h2>
-            <p className='result-description'>{result.description}</p>
-            <button className='result-save' onClick={() => saveMovie(result)}>
-              Save
-            </button>
-          </div>
+        <div className="searchresults">
+          {results.map((result) => (
+            <div key={result.id} className="result-container">
+              <img src={result.image} className="result-image" alt="poster" />
+              <div className="result-info">
+                <h2 className="result-title">{result.title}</h2>
+                <p className="result-description">{result.description}</p>
+                <button
+                  className="result-save"
+                  onClick={() => saveMovie(result)}
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-    
       )}
       <div>
         {/* <button onClick={getAllNews}>Get all saved news</button> */}
@@ -116,8 +121,8 @@ function Searchresults() {
                 <p>
                   <a
                     href={savedArticle.url}
-                    target='_blank'
-                    rel='noopener noreferrer'
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     {savedArticle.url}
                   </a>
