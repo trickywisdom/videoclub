@@ -46,7 +46,7 @@ function Savedmovies() {
 
   return (
     <div>
-      {/* <button onClick={getAllMovies}>Get all saved movies</button> */}
+      
       {savedMovies.length > 0 && (
         <ul className='saved-movies'>
           {savedMovies.map((savedMovie) => (
@@ -61,16 +61,7 @@ function Savedmovies() {
                 <p className='saved-movie-description'>
                   {savedMovie.description}
                 </p>
-                {/* <p>
-                  <a
-                    href={savedMovie.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {savedMovie.url}
-                  </a>
-                </p> */}
-                {/* <p>{savedMovie.publishedAt}</p> */}
+               
                 <button
                   className='saved-movie-delete'
                   onClick={() => deleteMovie(savedMovie.id)}
