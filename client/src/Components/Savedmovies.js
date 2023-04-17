@@ -46,6 +46,7 @@ function Savedmovies() {
 
   return (
     <div>
+
       {savedMovies.length > 0 && (
         <ul className="saved-movies">
           {savedMovies.map((savedMovie) => (
