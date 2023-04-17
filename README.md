@@ -44,4 +44,8 @@ npm run test
 Give a ⭐️ if this project helped you!
 
 ***
+<<<<<<< HEAD
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+=======
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+>>>>>>> 36b066e5ff43894c9dfd52a585da8735eea1dd73

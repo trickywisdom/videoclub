@@ -1,20 +1,21 @@
 import { useState } from "react";
 import axios from "axios";
 
+
 function Searchresults() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
-    const [savedArticles, setSavedArticles] = useState([]);
-    let token = localStorage.getItem("token");
+  const [savedArticles, setSavedArticles] = useState([]);
+  let token = localStorage.getItem("token");
 
-  async function fetchNews(e) {
+  async function fetchMovies(e) {
     e.preventDefault();
 
     let response = await axios.get(
       `http://localhost:8000/movie?title=${query}`
     );
-      console.log(response);
-      console.log(response.data.results);
+    console.log(response);
+    console.log(response.data.results);
 
     if (response.status === 200) {
       setResults(response.data.results);
@@ -29,7 +30,7 @@ function Searchresults() {
     setSavedArticles(response.data);
   }
 
-    // SAVE BUTTON
+  // SAVE BUTTON
   async function saveMovie(movie) {
     try {
       let response = await axios.put(
@@ -41,8 +42,8 @@ function Searchresults() {
           },
         }
       );
-        console.log(response.data);
-        alert("Your movie is saved successfully")
+      console.log(response.data);
+      alert("Your movie is saved successfully");
     } catch (error) {
       console.error(error);
     }
@@ -64,21 +65,23 @@ function Searchresults() {
       console.log("Error deleting article: ", error);
       alert("Error deleting article");
     }
-    }
-    
+  }
+
   return (
     <>
-      <form onSubmit={fetchNews}>
-        <label htmlFor="input">Let's fetch some news:</label>
+      <form className="submitForm" onSubmit={fetchMovies}>
+        <label htmlFor='input'>Search for a movie title:</label>
         <input
-          id="input"
-          type="text"
+          id='input'
+          type='text'
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button type="submit">Submit</button>
+        <button className="buttonSubmit" type='submit'>Submit</button>
+        <img src="https://whatthefrance.org/wp-content/uploads/2021/01/Videoclub-300x120.png" className="logo" />
       </form>
       {results.length > 0 && (
+<<<<<<< HEAD
         <div className="searchresults">
           {results.map((result) => (
             <div key={result.id}>
@@ -98,10 +101,30 @@ function Searchresults() {
               <button onClick={() => saveMovie(result)}>Save</button>
             </div>
           ))}
+=======
+      <div className='searchresults'>
+      {results.map((result) => (
+        <div key={result.id} className='result-container'>
+          <img
+            src={result.image}
+            className='result-image'
+            alt='poster'
+          />
+          <div className='result-info'>
+            <h2 className='result-title'>{result.title}</h2>
+            <p className='result-description'>{result.description}</p>
+            <button className='result-save' onClick={() => saveMovie(result)}>
+              Save
+            </button>
+          </div>
+>>>>>>> 36b066e5ff43894c9dfd52a585da8735eea1dd73
         </div>
+      ))}
+    </div>
+    
       )}
       <div>
-        <button onClick={getAllNews}>Get all saved news</button>
+        {/* <button onClick={getAllNews}>Get all saved news</button> */}
         {savedArticles.length > 0 && (
           <ul>
             {savedArticles.map((savedArticle) => (
@@ -111,8 +134,8 @@ function Searchresults() {
                 <p>
                   <a
                     href={savedArticle.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target='_blank'
+                    rel='noopener noreferrer'
                   >
                     {savedArticle.url}
                   </a>
