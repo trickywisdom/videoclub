@@ -21,7 +21,7 @@ if (token) {
       password: passwordRef.current.value,
     };
     let response = await axios.post(
-      "https://videoclub.up.railway.app/signup",
+      "https://videoclub-u0eq.onrender.com/signup",
       newUser
     );
     console.log(response);

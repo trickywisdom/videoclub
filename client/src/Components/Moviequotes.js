@@ -14,7 +14,7 @@ function Moviequotes() {
 
   async function getQuote() {
     let response = await axios.get(
-      "https://videoclub.up.railway.app/randomquote"
+      "https://videoclub-u0eq.onrender.com/randomquote"
     );
 
     setQuote(response.data);

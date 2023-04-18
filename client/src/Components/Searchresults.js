@@ -16,7 +16,7 @@ function Searchresults() {
     e.preventDefault();
 
     let response = await axios.get(
-      `https://videoclub.up.railway.app/movie?title=${query}`,
+      `https://videoclub-u0eq.onrender.com/movie?title=${query}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

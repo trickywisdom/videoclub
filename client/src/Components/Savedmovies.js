@@ -18,7 +18,7 @@ function Savedmovies() {
       return navigate("/login");
     }
     let response = await axios.get(
-      "https://videoclub.up.railway.app/saved-movies",
+      "https://videoclub-u0eq.onrender.com/saved-movies",
       {
         headers: {
           Authorization: `Bearer ${token}`,
