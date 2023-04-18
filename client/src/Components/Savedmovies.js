@@ -17,11 +17,14 @@ function Savedmovies() {
     if (!token) {
       return navigate("/login");
     }
-    let response = await axios.get("http://localhost:8000/saved-movies", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    let response = await axios.get(
+      "https://videoclub.up.railway.app/saved-movies",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     setSavedMovies(response.data);
   }

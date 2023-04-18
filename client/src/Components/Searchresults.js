@@ -16,7 +16,7 @@ function Searchresults() {
     e.preventDefault();
 
     let response = await axios.get(
-      `http://localhost:8000/movie?title=${query}`,
+      `https://videoclub.up.railway.app/movie?title=${query}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

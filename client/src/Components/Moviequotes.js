@@ -13,7 +13,9 @@ function Moviequotes() {
   const [quote, setQuote] = useState("");
 
   async function getQuote() {
-    let response = await axios.get("http://localhost:8000/randomquote");
+    let response = await axios.get(
+      "https://videoclub.up.railway.app/randomquote"
+    );
 
     setQuote(response.data);
   }
