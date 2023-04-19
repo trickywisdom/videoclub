@@ -20,10 +20,7 @@ if (token) {
       username: usernameRef.current.value,
       password: passwordRef.current.value,
     };
-    let response = await axios.post(
-      "https://videoclub-u0eq.onrender.com/signup",
-      newUser
-    );
+    let response = await axios.post("http://localhost:8000/signup", newUser);
     console.log(response);
     // catch an error from database
     if (response.data.msg) {

@@ -16,7 +16,7 @@ function Searchresults() {
     e.preventDefault();
 
     let response = await axios.get(
-      `https://videoclub-u0eq.onrender.com/movie?title=${query}`,
+      `http://localhost:8000/movie?title=${query}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
