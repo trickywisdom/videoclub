@@ -16,7 +16,7 @@ function Searchresults() {
     e.preventDefault();
 
     let response = await axios.get(
-      `http://localhost:8000/movie?title=${query}`,
+      `https://videoclub-server.vercel.app/movie?title=${query}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -37,7 +37,7 @@ function Searchresults() {
   async function saveMovie(movie) {
     try {
       let response = await axios.put(
-        "http://localhost:8000/save-movie",
+        "https://videoclub-server.vercel.app/save-movie",
         movie,
         {
           headers: {
