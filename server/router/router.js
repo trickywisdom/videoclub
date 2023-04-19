@@ -38,16 +38,6 @@ router.post("/signup", async (req, res) => {
 // The purpose of this code is to provide a secure way for users to log in to an application. It checks if the username and password provided in the request are valid, and if they are, it generates a JWT that can be used for authentication.
 router.post("/login", async (req, res) => {
   try {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader(
-      "Access-Control-Allow-Methods",
-      "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-    ); // If needed
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "X-Requested-With,content-type"
-    ); // If needed
-    res.setHeader("Access-Control-Allow-Credentials", true); // If needed
     let { username, password } = req.body;
     if (!username || !password) {
       return res.send({ msg: "Both username and password are required" });
