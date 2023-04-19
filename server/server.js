@@ -14,7 +14,9 @@ const PORT = 8000 || process.env.port;
 app.use(express.json());
 app.use(cors());
 
-app.use("/", router);
+app.use("/", router, (req, res) => {
+  res.send('WeLcOmE to the server home page')
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
